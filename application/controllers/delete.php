@@ -18,11 +18,21 @@ class Delete extends MY_Controller {
     }
 
     public function api() {
-        $this->SmgsModel->delete_by_id($_POST['smgs_id']);
+        $model = $this->SmgsModel->get_one_by_id($_POST['smgs_id']);
 
-        $this->_send_json(array(
-            'success' => 1
-        ));
+        $responce = array(
+            'success' => 0
+        );
+
+        if (!empty($model)) {
+            $responce['success'] = 1;
+
+            $this->SmgsModel->delete_by_id($model->id);
+
+            unlink(dirname(BASEPATH) . "/files/generated/smgs_zip_" . $model->id . ".zip");
+        }
+
+        $this->_send_json($responce);
     }
 
 }

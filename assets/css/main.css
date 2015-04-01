@@ -69,13 +69,24 @@ textarea {
     table-layout: fixed;
 }
 .table-smgs tbody tr td {
-     vertical-align: middle;
+    vertical-align: middle;
 }
 .sidebar ul li a {
     color: #6E6E6E;
     /* text-shadow: 1px 1px 1px #FFFFFF; */
-  font-size: 16px;
+    font-size: 16px;
 }
 .sidebar ul li a.active, .sidebar ul li a:hover {
     background-color: #EFEAFF;
+}
+
+.wrapper-system .nofound {
+    margin-top: 10%;
+}
+.wrapper-system a {
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    margin-top: 20px;
 }

@@ -22,7 +22,7 @@
                                 <td><?php echo $v->name; ?></td>
                                 <td><?php echo mdate('%d-%m-%Y %H:%i:%s',$v->created); ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-success btn-sm">Скачать</button>
+                                    <a href="/boot/get/<?php echo $v->id; ?>" class="btn btn-success btn-sm">Скачать</a>
                                     <a href="/add/<?php echo $v->id; ?>" class="btn btn-info btn-sm">Клонировать</a>
                                     <button type="button" data-id="<?php echo $v->id; ?>" class="btn btn-danger btn-sm deleteWB">Удалить</button>
                                 </td>
