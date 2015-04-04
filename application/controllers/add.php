@@ -56,22 +56,28 @@ class Add extends MY_Controller {
 
         $valid->set_rules('name', '"Имя"', 'required');
 
+        // Код дороги отправителя
         $_POST['senderRoadCode'] = "21";
+        // Код станции отправителя
         $_POST['senderStationCode'] = "140304";
+        // Код отправителя
+        $_POST['senderCode'] = "0476";
+        // Отправитель
+        $_POST['sender'] = "ОАО «БЕЛГИПС», 220038 БЕЛАРУСЬ г.Минск ул.Козлова 24, р/с: 3012100982015 МФО: 153001369, банк: ОАО БПС-СБЕРБАНК Минск, УНП: 10007096, ОКПО: 294697000";
 
-        $valid->set_rules('senderCode', '"Код отправителя"', 'required|integer|');
-        $valid->set_rules('sender', '"Отправитель"', 'required');
         $valid->set_rules('recipientCode', '"Код получателя"', 'required|integer');
         $valid->set_rules('recipient', '"Получатель"', 'required');
-        $valid->set_rules('dispatchStation', '"Станция отправления"', 'required');
+
+        // Станция отправления
+        $_POST['dispatchStation'] = "МИНСК-ВОСТОЧНЫЙ БЧ 140304";
+
         $valid->set_rules('specificApplicationSender', '"Особые заявления отправителя"', 'required');
-
-        $_POST['optionalMarks'] = "Победит Транс 7900900934 По поручению ЧУП «Лагентранс»";
-        $_POST['shippingName'] = "Плиты, листы, панели, плитки и аналогичные изделия из гипса или смесей на его основе,без орнамента, кроме покрытых или армированных только бумагой или картоном";
-
+        
+        $valid->set_rules('optionalMarks', '"Отметки, необязательные для жд"', 'required');
+        $valid->set_rules('shippingName', '"Наименование груза"', 'required');
         $valid->set_rules('wagonNumber', '"Номер вагона"', 'required');
         $valid->set_rules('carryingCapacity', '"Грузоподъемность"', 'required');
-        $valid->set_rules('axesNumber', '"axesNumber"', 'required|integer');
+        $valid->set_rules('axesNumber', '"Количество осей"', 'required|integer');
         $valid->set_rules('wagonTara', '"Тара вагона"', 'required');
         $valid->set_rules('stationDestination', '"Станция назначения"', 'required');
         $valid->set_rules('roadDestination', '"Дорога назначения"', 'required');
@@ -83,13 +89,11 @@ class Add extends MY_Controller {
         $valid->set_rules('summaryWeight', '"Итого масса"', 'required');
         $valid->set_rules('summaryPlaceWords', '"Итого место(прописью)"', 'required');
         $valid->set_rules('summaryWeightWords', '"Итого масса(прописью)"', 'required');
-        $valid->set_rules('transitPaymentNumber', '"Номер оплаты транзитных дорог(от 1 до 5)"', 'required|integer');
-
-        $_POST['declaredFreightValue'] = "Нет";
-
+//        $valid->set_rules('transitPaymentNumber', '"Номер оплаты транзитных дорог(от 1 до 5)"', 'required|integer');
+        
+        $valid->set_rules('declaredFreightValue', '"Объявленная ценность груза"', 'required');
         $valid->set_rules('sealsNumber', '"Пломбы отправителя"', 'required');
-
-        $_POST['seals'] = "БЧ-21 № 6842080, БЧ-21 № 6842079";
+        $valid->set_rules('seals', '"Пломбы"', 'required');
 
         $valid->set_rules('massMethodDeterm', '"Способ определения массы"', 'required');
 

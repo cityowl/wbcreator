@@ -30,11 +30,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Код отправителя</label>
-                                <input type="text" class="form-control" name="senderCode" value="<?php if($clone) { ?><?php echo $clone->senderCode; ?><?php } ?>">
+                                <input type="text" class="form-control" name="senderCode" value="0476" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Отправитель</label>
-                                <textarea class="form-control" name="sender" rows="2"><?php if($clone) { ?><?php echo $clone->sender; ?><?php } ?></textarea>
+                                <textarea class="form-control" name="sender" rows="2" disabled>ОАО «БЕЛГИПС», 220038 БЕЛАРУСЬ г.Минск ул.Козлова 24, р/с: 3012100982015 МФО: 153001369, банк: ОАО БПС-СБЕРБАНК Минск, УНП: 10007096, ОКПО: 294697000</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Код получателя</label>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Станция отправления</label>
-                                <input type="text" class="form-control" name="dispatchStation" value="<?php if($clone) { ?><?php echo $clone->dispatchStation; ?><?php } ?>">
+                                <input type="text" class="form-control" name="dispatchStation" value="МИНСК-ВОСТОЧНЫЙ БЧ 140304" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Особые заявления отправителя</label>
@@ -54,11 +54,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Отметки, необязательные для жд</label>
-                                <textarea class="form-control" name="optionalMarks" rows="2" disabled>Победит Транс 7900900934 По поручению ЧУП «Лагентранс»</textarea>
+                                <textarea class="form-control" name="optionalMarks" rows="2"><?php if($clone) { ?><?php echo $clone->optionalMarks; ?><?php } ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Наименование груза</label>
-                                <textarea class="form-control" name="shippingName" rows="2" disabled>Плиты, листы, панели, плитки и аналогичные изделия из гипса или смесей на его основе,без орнамента, кроме покрытых или армированных только бумагой или картоном</textarea>
+                                <textarea class="form-control" name="shippingName" rows="2"><?php if($clone) { ?><?php echo $clone->shippingName; ?><?php } ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Номер вагона</label>
@@ -70,15 +70,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Кол-во осей</label>
-                                <input type="text" class="form-control" name="axesNumber" value="<?php if($clone) { ?><?php echo $clone->axesNumber; ?><?php } ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Тара вагона</label>
-                                <input type="text" class="form-control" name="wagonTara" value="<?php if($clone) { ?><?php echo $clone->wagonTara; ?><?php } ?>">
+                                <select class="form-control" name="axesNumber">
+                                    <option <?php if($clone && $clone->axesNumber == "4") { ?>selected='selected'<?php } ?> value="4">4</option>
+                                    <option <?php if($clone && $clone->axesNumber == "6") { ?>selected='selected'<?php } ?> value="6">6</option>
+                                    <option <?php if($clone && $clone->axesNumber == "8") { ?>selected='selected'<?php } ?> value="8">8</option>
+                                </select>
                             </div>
                         </div>
                         <!--RIGHT FORM-->
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Тара вагона</label>
+                                <input type="text" class="form-control" name="wagonTara" value="<?php if($clone) { ?><?php echo $clone->wagonTara; ?><?php } ?>">
+                            </div>
                             <div class="form-group">
                                 <label>Станция назначения</label>
                                 <input type="text" class="form-control" name="stationDestination" value="<?php if($clone) { ?><?php echo $clone->stationDestination; ?><?php } ?>">
@@ -120,12 +124,8 @@
                                 <input type="text" class="form-control" name="summaryWeightWords" value="<?php if($clone) { ?><?php echo $clone->summaryWeightWords; ?><?php } ?>">
                             </div>
                             <div class="form-group">
-                                <label>Номер оплаты транзитных дорог(от 1 до 5)</label>
-                                <input type="text" class="form-control" name="transitPaymentNumber" value="<?php if($clone) { ?><?php echo $clone->transitPaymentNumber; ?><?php } ?>">
-                            </div>
-                            <div class="form-group">
                                 <label>Объявленная ценность груза</label>
-                                <input type="text" class="form-control" name="declaredFreightValue" value="Нет" disabled>
+                                <input type="text" class="form-control" name="declaredFreightValue" value="<?php if($clone) { ?><?php echo $clone->declaredFreightValue; ?><?php } ?>">
                             </div>
                             <div class="form-group">
                                 <label>Пломбы отправителя</label>
@@ -136,13 +136,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Пломбы</label>
-                                <input type="text" class="form-control" name="seals" value="БЧ-21 № 6842080, БЧ-21 № 6842079" disabled>
+                                <input type="text" class="form-control" name="seals" value="<?php if($clone) { ?><?php echo $clone->seals; ?><?php } ?>">
                             </div>
                             <div class="form-group">
                                 <label>Способ определения массы</label>
-                                <select class="form-control" name="massMethodDeterm">
-                                    <option <?php if($clone && $clone->massMethodDeterm == "На электронных весах") { ?>selected='selected'<?php } ?> value="На электронных весах">На электронных весах</option>
-                                </select>
+                                <input type="text" class="form-control" name="massMethodDeterm" value="<?php if($clone) { ?><?php echo $clone->massMethodDeterm; ?><?php } ?>">
                             </div>
                         </div>
                         <div class="col-md-12">
